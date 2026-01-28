@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Property {
+  id              String   @id @default(uuid())
+  type            String   // APARTMENT, LAND, SHOP
+  listingType     String   // SALE, RENT
+  
+  area            Float
+  price           Float
+  district        String
+  
+  // Location
+  latitude        Float?
+  longitude       Float?
+
+  // Details
+  floor           Int?     // For apartments mainly
+  description     String?
+
+  // Seller Info (Private)
+  sellerPhone     String
+  sellerWhatsapp  String
+  titleDeedPath   String?  // URL to Bunny.net
+
+  // Media
+  videoPath       String?  // URL to Bunny.net
+  images          PropertyImage[]
+
+  // Status
+  status          String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model PropertyImage {
+  id         String   @id @default(uuid())
+  path       String   // URL to Bunny.net
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}

@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  /* Premium Royal Blue Theme */
+  --primary: #1e3a8a;
+  /* Blue 900 */
+  --primary-light: #3b82f6;
+  /* Blue 500 */
+  --secondary: #10b981;
+  /* Emerald 500 */
+  --accent: #f59e0b;
+  /* Amber 500 */
+
+  --background: #f8fafc;
+  /* Slate 50 */
+  --surface: #ffffff;
+  --text-main: #0f172a;
+  /* Slate 900 */
+  --text-muted: #64748b;
+  /* Slate 500 */
+
+  --font-cairo: "Cairo", sans-serif;
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+
+  --font-sans: var(--font-cairo);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-main);
+  font-family: var(--font-cairo);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar for Chrome/Safari/Edge */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Utility for glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
